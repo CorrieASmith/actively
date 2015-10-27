@@ -1,7 +1,27 @@
 <h3><%= @target.muscle %></h3>
 <br>
 
-<p><%= link_to "Edit", edit_target_path(@target), id: "edit_muscle", remote: true %></p>
-<p><%= link_to "Delete", target_path(@target),
-:data => {:confirm => "Are you sure?",
-  :method => "delete"}%></p>
+<% if @target.exercises.any? %>
+<h4>Here are the exercises for this target muscle:</h4>
+
+<ul>
+  <% @target.exercises.each do |exercise| %>
+  <li>
+    <%= exercise.description %> |
+    <%= link_to "Edit", edit_target_exercise_path(@target, exercise) %> |
+    <%= link_to "Delete", target_exercise_path(@target, exercise),
+    :data => {:confirm => "Are you sure?",
+      :method => "delete"} %>
+    </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no exercises for this muscle yet!</p>
+  <% end %>
+
+  <br>
+
+  <p><%= link_to "Add an exercise", new_target_exercise_path(@target) %></p>
+  <p><%= link_to "Delete", target_path(@target),
+  :data => {:confirm => "Are you sure you want to delete this target muscle?",
+    :method => "delete"} %></p>
