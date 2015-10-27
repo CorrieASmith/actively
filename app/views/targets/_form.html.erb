@@ -1,0 +1,8 @@
+<%= render "layouts/errors", :object => @target %>
+
+<%= form_for @target do |f| %>
+<%= f.label :muscle %>
+<%= f.text_field :muscle %>
+<br><br>
+<%= f.submit %>
+<% end %>
