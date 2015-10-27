@@ -1,1 +1,8 @@
-<h3>Hi</h3>
+<h3>Targets</h3>
+<br>
+
+<ul>
+  <% @targets.each do |target| %>
+    <li><%= target.muscle %></li>
+  <% end %>
+</ul>
