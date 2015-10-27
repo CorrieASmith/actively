@@ -1,1 +1,7 @@
 <h3><%= @target.muscle %></h3>
+<br>
+
+<p><%= link_to "Edit", edit_target_path(@target), id: "edit_muscle", remote: true %></p>
+<p><%= link_to "Delete", target_path(@target),
+:data => {:confirm => "Are you sure?",
+  :method => "delete"}%></p>
