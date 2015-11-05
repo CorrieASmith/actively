@@ -16,7 +16,7 @@ class TargetsController < ApplicationController
     @target = Target.new(target_params)
     if @target.save
       flash[:notice] = "Your target muscle was submitted successfully!"
-      redirect_to "/"
+      redirect_to targets_path
     else
       render :new
     end
