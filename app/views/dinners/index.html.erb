@@ -3,7 +3,7 @@
 
 <ul>
   <% @dinners.each do |dinner| %>
-  <li><%= link_to dinner.add_food, breakfast_path(dinner) %></li>
+  <li><%= link_to dinner.add_food, dinner_path(dinner) %></li>
   <% end %>
 </ul>
 
