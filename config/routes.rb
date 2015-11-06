@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :targets do
     resources :exercises
   end
+  resources :breakfasts
+  resources :lunches
+  resources :dinners
+  resources :snacks
 end
