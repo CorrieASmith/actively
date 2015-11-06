@@ -1,0 +1,27 @@
+<!-- <h3><%= @meal.breakfast %></h3>
+<br>
+
+<% if @meal.foods.any? %>
+<h4>Here are the foods for this meal:</h4>
+
+<ul>
+  <% @meal.foods.each do |food| %>
+  <li>
+    <%= food.description %> |
+    <%= link_to "Edit", edit_meal_food_path(@meal, food), id: "edit_food", remote: true %> |
+    <%= link_to "Delete", meal_food_path(@meal, food),
+    :data => {:confirm => "Are you sure?",
+      :method => "delete"} %>
+    </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no foods for this muscle yet!</p>
+  <% end %>
+
+  <br>
+
+  <p><%= link_to "Add an food", new_meal_food_path(@meal), id: "new_food", remote: true %></p>
+  <p><%= link_to "Delete", meal_path(@meal), id: "edit_meal", remote: true,
+  :data => {:confirm => "Are you sure you want to delete this meal?",
+    :method => "delete"} %></p> -->
