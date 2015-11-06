@@ -43,6 +43,6 @@ class BreakfastsController < ApplicationController
   end
 
   private def breakfast_params
-    params.require(:breakfast).permit(:muscle)
+    params.require(:breakfast) 
   end
 end
