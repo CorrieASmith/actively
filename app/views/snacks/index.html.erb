@@ -1,0 +1,10 @@
+<h3>Snacks</h3>
+<br>
+
+<ul>
+  <% @snacks.each do |snack| %>
+  <li><%= link_to snack.add_food, breakfast_path(snack) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add Food', new_snack_path, id: "new_snack", remote: true %>

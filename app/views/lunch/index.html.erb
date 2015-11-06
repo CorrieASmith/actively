@@ -1,0 +1,10 @@
+<h3>Lunch</h3>
+<br>
+
+<ul>
+  <% @lunches.each do |lunch| %>
+  <li><%= link_to lunch.add_food, breakfast_path(lunch) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add Food', new_lunch_path, id: "new_lunch", remote: true %>
