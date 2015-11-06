@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root :to => "home#index"
-  devise_for :users do
-    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
-  end
-
-  :targets do
+  # get '/users/:id', :to => 'users#show', :as => :user
+  devise_for :users
+  resources :users
+  resources :targets do
     resources :exercises
   end
 end
