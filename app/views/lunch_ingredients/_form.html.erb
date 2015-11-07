@@ -1,0 +1,8 @@
+<%= render('layouts/errors', :object => @lunchingredient) %>
+
+<%= form_for [@lunch, @lunchingredient] do |f| %>
+<%= f.label :description %>
+<%= f.text_field :description %>
+<br><br>
+<%= f.submit %>
+<% end %>
