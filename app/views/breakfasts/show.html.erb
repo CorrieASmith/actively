@@ -1,0 +1,27 @@
+<h3><%= @breakfast.add_food %></h3>
+<br>
+
+<% if @breakfast.breakfastingredients.any? %>
+<h4>Here are the ingredients in this breakfast food:</h4>
+
+<ul>
+  <% @breakfast.breakfastingredients.each do |breakfastingredient| %>
+  <li>
+    <%= breakfastingredient.description %> |
+    <%= link_to "Edit", edit_breakfast_breakfastingredient_path(@breakfast, breakfastingredient), id: "edit_breakfast_ingredient", remote: true %> |
+    <%= link_to "Delete", breakfast_breakfastingredient_path(@breakfast, breakfastingredient),
+    :data => {:confirm => "Are you sure?",
+      :method => "delete"} %>
+    </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no ingredients for this food yet!</p>
+  <% end %>
+
+  <br>
+
+  <p><%= link_to "Add an ingredient", new_breakfast_breakfastingredient_path(@breakfast), id: "new_breakfast_ingredient", remote: true %></p>
+  <p><%= link_to "Delete", breakfast_path(@breakfast), id: "edit_breakfast", remote: true,
+  :data => {:confirm => "Are you sure you want to delete this meal?",
+    :method => "delete"} %></p>
