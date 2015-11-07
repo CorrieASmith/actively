@@ -43,6 +43,6 @@ class DinnersController < ApplicationController
   end
 
   private def dinner_params
-    params.require(:dinner)
+    params.require(:dinner).permit(:add_food)
   end
 end
