@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :lunches
   resources :dinners
   resources :snacks
+  resources :ingredients
 end
