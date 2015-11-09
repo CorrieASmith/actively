@@ -40,7 +40,7 @@ class BreakfastIngredientsController < ApplicationController
     @breakfast_ingredient = BreakfastIngredient.find(params[:id])
     breakfast_id = params[:breakfast_id]
     @breakfast_ingredient.destroy
-    redirect_to breakfast_path(breakfast_id)
+    redirect_to "/"
   end
 
   private
