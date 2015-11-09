@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   end
 
   resources :lunches do
-    resources :lunchingredients
+    resources :lunch_ingredients
   end
 
   resources :dinners do
-    resources :dinneringredients
+    resources :dinner_ingredients
   end
 
   resources :snacks do
-    resources :snackingredients
+    resources :snack_ingredients
   end
 end

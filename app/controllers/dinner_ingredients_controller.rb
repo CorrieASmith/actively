@@ -7,12 +7,12 @@ class DinnerIngredientsController < ApplicationController
 
   def new
     @dinner = Dinner.find(params[:dinner_id])
-    @dinner_ingredient = @dinner.dinners.new
+    @dinner_ingredient = @dinner.dinner_ingredients.new
   end
 
   def create
     @dinner = Dinner.find(params[:dinner_id])
-    @dinner_ingredient = @dinner.dinners.new(dinner_params)
+    @dinner_ingredient = @dinner.dinner_ingredients.new(dinner_ingredient_params)
     if @dinner_ingredient.save
       redirect_to dinner_path(@dinner_ingredient.dinner)
     else
@@ -29,7 +29,7 @@ class DinnerIngredientsController < ApplicationController
   def update
     @dinner = Dinner.find(params[:dinner_id])
     @dinner_ingredient = DinnerIngredient.find(params[:id])
-    if @dinner_ingredient.update(dinner_params)
+    if @dinner_ingredient.update(dinner_ingredient_params)
       redirect_to dinner_path(@dinner_ingredient.dinner)
     else
       render :edit
@@ -40,11 +40,11 @@ class DinnerIngredientsController < ApplicationController
     @dinner_ingredient = DinnerIngredient.find(params[:id])
     dinner_id = params[:dinner_id]
     @dinner_ingredient.destroy
-    redirect_to dinner_path(dinner_id)
+    redirect_to "/"
   end
 
   private
-  def dinner_params
+  def dinner_ingredient_params
     params.require(:dinner_ingredient).permit(:description, :chosen)
   end
 end

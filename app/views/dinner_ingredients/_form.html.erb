@@ -1,6 +1,6 @@
-<%= render('layouts/errors', :object => @dinneringredient) %>
+<%= render('layouts/errors', :object => @dinner_ingredient) %>
 
-<%= form_for [@dinner, @dinneringredient] do |f| %>
+<%= form_for [@dinner, @dinner_ingredient] do |f| %>
 <%= f.label :description %>
 <%= f.text_field :description %>
 <br><br>
