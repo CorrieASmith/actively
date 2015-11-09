@@ -1,6 +1,6 @@
-<%= render('layouts/errors', :object => @snackingredient) %>
+<%= render('layouts/errors', :object => @snack_ingredient) %>
 
-<%= form_for [@snack, @snackingredient] do |f| %>
+<%= form_for [@snack, @snack_ingredient] do |f| %>
 <%= f.label :description %>
 <%= f.text_field :description %>
 <br><br>

@@ -1,20 +1,20 @@
 class LunchIngredientsController < ApplicationController
   def show
     @lunch = Lunch.find(params[:lunch_id])
-    @lunchingredient = LunchIngredient.find(params[:id])
-    redirect_to lunch_path(@lunchingredient.lunch)
+    @lunch_ingredient = LunchIngredient.find(params[:id])
+    redirect_to lunch_path(@lunch_ingredient.lunch)
   end
 
   def new
     @lunch = Lunch.find(params[:lunch_id])
-    @lunchingredient = @lunch.lunchs.new
+    @lunch_ingredient = @lunch.lunch_ingredients.new
   end
 
   def create
     @lunch = Lunch.find(params[:lunch_id])
-    @lunchingredient = @lunch.lunchs.new(lunch_params)
-    if @lunchingredient.save
-      redirect_to lunch_path(@lunchingredient.lunch)
+    @lunch_ingredient = @lunch.lunch_ingredients.new(lunch_ingredient_params)
+    if @lunch_ingredient.save
+      redirect_to lunch_path(@lunch_ingredient.lunch)
     else
       render :new
     end
@@ -22,29 +22,29 @@ class LunchIngredientsController < ApplicationController
 
   def edit
     @lunch = Lunch.find(params[:lunch_id])
-    @lunchingredient = LunchIngredient.find(params[:id])
+    @lunch_ingredient = LunchIngredient.find(params[:id])
     render :edit
   end
 
   def update
     @lunch = Lunch.find(params[:lunch_id])
-    @lunchingredient = LunchIngredient.find(params[:id])
-    if @lunchingredient.update(lunch_params)
-      redirect_to lunch_path(@lunchingredient.lunch)
+    @lunch_ingredient = LunchIngredient.find(params[:id])
+    if @lunch_ingredient.update(lunch_ingredient_params)
+      redirect_to lunch_path(@lunch_ingredient.lunch)
     else
       render :edit
     end
   end
 
   def destroy
-    @lunchingredient = LunchIngredient.find(params[:id])
+    @lunch_ingredient = LunchIngredient.find(params[:id])
     lunch_id = params[:lunch_id]
-    @lunchingredient.destroy
-    redirect_to lunch_path(lunch_id)
+    @lunch_ingredient.destroy
+    redirect_to "/"
   end
 
   private
-  def lunch_params
-    params.require(:lunchingredient).permit(:description, :chosen)
+  def lunch_ingredient_params
+    params.require(:lunch_ingredient).permit(:description, :chosen)
   end
 end
