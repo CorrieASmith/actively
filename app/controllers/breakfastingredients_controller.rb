@@ -1,20 +1,20 @@
 class BreakfastIngredientsController < ApplicationController
   def show
     @breakfast = Breakfast.find(params[:breakfast_id])
-    @breakfastingredient = BreakfastIngredient.find(params[:id])
-    redirect_to breakfast_path(@breakfastingredient.breakfast)
+    @breakfast_ingredient = BreakfastIngredient.find(params[:id])
+    redirect_to breakfast_path(@breakfast_ingredient.breakfast)
   end
 
   def new
     @breakfast = Breakfast.find(params[:breakfast_id])
-    @breakfastingredient = @breakfast.breakfastingredients.new
+    @breakfast_ingredient = @breakfast.breakfast_ingredients.new
   end
 
   def create
     @breakfast = Breakfast.find(params[:breakfast_id])
-    @breakfastingredient = @breakfast.breakfastingredients.new(breakfastingredient_params)
-    if @breakfastingredient.save
-      redirect_to breakfast_path(@breakfastingredient.breakfast)
+    @breakfast_ingredient = @breakfast.breakfast_ingredients.new(breakfast_ingredient_params)
+    if @breakfast_ingredient.save
+      redirect_to breakfast_path(@breakfast_ingredient.breakfast)
     else
       render :new
     end
@@ -22,29 +22,29 @@ class BreakfastIngredientsController < ApplicationController
 
   def edit
     @breakfast = Breakfast.find(params[:breakfast_id])
-    @breakfastingredient = BreakfastIngredient.find(params[:id])
+    @breakfast_ingredient = BreakfastIngredient.find(params[:id])
     render :edit
   end
 
   def update
     @breakfast = Breakfast.find(params[:breakfast_id])
-    @breakfastingredient = BreakfastIngredient.find(params[:id])
-    if @breakfastingredient.update(breakfastingredient_params)
-      redirect_to breakfast_path(@breakfastingredient.breakfast)
+    @breakfast_ingredient = BreakfastIngredient.find(params[:id])
+    if @breakfast_ingredient.update(breakfast_ingredient_params)
+      redirect_to breakfast_path(@breakfast_ingredient.breakfast)
     else
       render :edit
     end
   end
 
   def destroy
-    @breakfastingredient = BreakfastIngredient.find(params[:id])
+    @breakfast_ingredient = BreakfastIngredient.find(params[:id])
     breakfast_id = params[:breakfast_id]
-    @breakfastingredient.destroy
+    @breakfast_ingredient.destroy
     redirect_to breakfast_path(breakfast_id)
   end
 
   private
-  def breakfastingredient_params
-    params.require(:breakfastingredient).permit(:description, :chosen)
+  def breakfast_ingredient_params
+    params.require(:breakfast_ingredient).permit(:description, :chosen)
   end
 end

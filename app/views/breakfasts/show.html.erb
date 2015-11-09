@@ -1,15 +1,15 @@
 <h3><%= @breakfast.add_food %></h3>
 <br>
 
-<% if @breakfast.breakfastingredients.any? %>
+<% if @breakfast.breakfast_ingredients.any? %>
 <h4>Here are the ingredients in this breakfast food:</h4>
 
 <ul>
-  <% @breakfast.breakfastingredients.each do |breakfastingredient| %>
+  <% @breakfast.breakfast_ingredients.each do |breakfast_ingredient| %>
   <li>
-    <%= breakfastingredient.description %> |
-    <%= link_to "Edit", edit_breakfast_breakfastingredient_path(@breakfast, breakfastingredient), id: "edit_breakfast_ingredient", remote: true %> |
-    <%= link_to "Delete", breakfast_breakfastingredient_path(@breakfast, breakfastingredient),
+    <%= breakfast_ingredient.description %> |
+    <%= link_to "Edit", edit_breakfast_breakfast_ingredient_path(@breakfast, breakfast_ingredient), id: "edit_breakfast_ingredient", remote: true %> |
+    <%= link_to "Delete", breakfast_breakfast_ingredient_path(@breakfast, breakfast_ingredient),
     :data => {:confirm => "Are you sure?",
       :method => "delete"} %>
     </li>
