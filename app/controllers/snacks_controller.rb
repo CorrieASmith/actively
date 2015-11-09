@@ -1,50 +1,48 @@
-class SnackIngredientsController < ApplicationController
+class SnacksController < ApplicationController
+  def index
+    @snacks = Snack.all
+  end
+
   def show
-    @snack = Snack.find(params[:snack_id])
-    @snack_ingredient = SnackIngredient.find(params[:id])
-    redirect_to snack_path(@snack_ingredient.snack)
+    @snack = Snack.find(params[:id])
   end
 
   def new
-    @snack = Snack.find(params[:snack_id])
-    @snack_ingredient = @snack.snack_ingredient.new
+    @snack = Snack.new
+    render :new
   end
 
   def create
-    @snack = Snack.find(params[:snack_id])
-    @snack_ingredient = @snack.snack_ingredient.new(snack_ingredient_params)
-    if @snack_ingredient.save
-      redirect_to snack_path(@snack_ingredient.snack)
+    @snack = Snack.new(snack_params)
+    if @snack.save
+      flash[:notice] = "Your snack was submitted successfully!"
+      redirect_to snacks_path
     else
       render :new
     end
   end
 
   def edit
-    @snack = Snack.find(params[:snack_id])
-    @snack_ingredient = SnackIngredient.find(params[:id])
+    @snack = Snack.find(params[:id])
     render :edit
   end
 
   def update
-    @snack = Snack.find(params[:snack_id])
-    @snack_ingredient = SnackIngredient.find(params[:id])
-    if @snack_ingredient.update(snack_ingredient_params)
-      redirect_to snack_path(@snack_ingredient.snack)
+    @snack = Snack.find(params[:id])
+    if @snack.update(snack_params)
+      redirect_to "/"
     else
       render :edit
     end
   end
 
   def destroy
-    @snack_ingredient = SnackIngredient.find(params[:id])
-    snack_id = params[:snack_id]
-    @snack_ingredient.destroy
+    @snack = Snack.find(params[:id])
+    @snack.destroy
     redirect_to "/"
   end
 
-  private
-  def snack_ingredient_params
-    params.require(:snack_ingredient).permit(:description, :chosen)
+  private def snack_params
+    params.require(:snack).permit(:add_food)
   end
 end

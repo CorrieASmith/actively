@@ -1,20 +1,20 @@
 class SnackIngredientsController < ApplicationController
   def show
     @snack = Snack.find(params[:snack_id])
-    @snackingredient = SnackIngredient.find(params[:id])
-    redirect_to snack_path(@snackingredient.snack)
+    @snack_ingredient = SnackIngredient.find(params[:id])
+    redirect_to snack_path(@snack_ingredient.snack)
   end
 
   def new
     @snack = Snack.find(params[:snack_id])
-    @snackingredient = @snack.snacks.new
+    @snack_ingredient = @snack.snack_ingredients.new
   end
 
   def create
     @snack = Snack.find(params[:snack_id])
-    @snackingredient = @snack.snacks.new(snack_params)
-    if @snackingredient.save
-      redirect_to snack_path(@snackingredient.snack)
+    @snack_ingredient = @snack.snack_ingredients.new(snack_ingredient_params)
+    if @snack_ingredient.save
+      redirect_to snack_path(@snack_ingredient.snack)
     else
       render :new
     end
@@ -22,29 +22,29 @@ class SnackIngredientsController < ApplicationController
 
   def edit
     @snack = Snack.find(params[:snack_id])
-    @snackingredient = SnackIngredient.find(params[:id])
+    @snack_ingredient = SnackIngredient.find(params[:id])
     render :edit
   end
 
   def update
     @snack = Snack.find(params[:snack_id])
-    @snackingredient = SnackIngredient.find(params[:id])
-    if @snackingredient.update(snack_params)
-      redirect_to snack_path(@snackingredient.snack)
+    @snack_ingredient = SnackIngredient.find(params[:id])
+    if @snack_ingredient.update(snack_ingredient_params)
+      redirect_to snack_path(@snack_ingredient.snack)
     else
       render :edit
     end
   end
 
   def destroy
-    @snackingredient = SnackIngredient.find(params[:id])
+    @snack_ingredient = SnackIngredient.find(params[:id])
     snack_id = params[:snack_id]
-    @snackingredient.destroy
-    redirect_to snack_path(snack_id)
+    @snack_ingredient.destroy
+    redirect_to "/"
   end
 
   private
-  def snack_params
-    params.require(:snackingredient).permit(:description, :chosen)
+  def snack_ingredient_params
+    params.require(:snack_ingredient).permit(:description, :chosen)
   end
 end
