@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :breakfasts do
-    resources :breakfastingredients
+    resources :breakfast_ingredients
   end
 
   resources :lunches do
