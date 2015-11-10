@@ -13,6 +13,8 @@ describe "the add a lunch process" do
       expect(page).to have_content 'Tuna Melt'
     end
   it "adds a new lunch ingredient" do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
     lunch = FactoryGirl.create(:lunch)
     visit lunch_path(lunch)
     click_link 'Add an ingredient'

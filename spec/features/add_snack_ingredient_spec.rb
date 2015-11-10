@@ -13,6 +13,8 @@ describe "the add a snack process" do
       expect(page).to have_content 'Chocolate Covered Pretzels'
     end
   it "adds a new snack ingredient" do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
     snack = FactoryGirl.create(:snack)
     visit snack_path(snack)
     click_link 'Add an ingredient'

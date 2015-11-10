@@ -13,6 +13,8 @@ describe "the add a target exercise process" do
     expect(page).to have_content 'Biceps'
   end
   it "adds a new target exercise" do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
     target = FactoryGirl.create(:target)
     visit target_path(target)
     click_link 'Add an exercise'

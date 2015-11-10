@@ -13,6 +13,8 @@ describe "the add a dinner process" do
       expect(page).to have_content 'Chicken Alfredo'
     end
   it "adds a new dinner ingredient" do
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
     dinner = FactoryGirl.create(:dinner)
     visit dinner_path(dinner)
     click_link 'Add an ingredient'

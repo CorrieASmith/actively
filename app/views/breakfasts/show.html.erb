@@ -21,7 +21,7 @@
 
   <br>
 
-  <p><%= link_to "Add an ingredient", new_breakfast_breakfast_ingredient_path(@breakfast) %></p>
+  <p><%= link_to "Add an ingredient", new_breakfast_breakfast_ingredient_path(@breakfast), id:"add_ingredient" %></p>
   <p><%= link_to "Delete", breakfast_path(@breakfast),
   :data => {:confirm => "Are you sure you want to delete this meal?",
     :method => "delete"} %></p>
