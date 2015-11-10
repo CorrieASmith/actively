@@ -14,6 +14,7 @@ class BreakfastsController < ApplicationController
 
   def create
     @breakfast = Breakfast.new(breakfast_params)
+    current_user.breakfasts.push(@breakfast)
     if @breakfast.save
       flash[:notice] = "Your breakfast was submitted successfully!"
       redirect_to breakfasts_path
