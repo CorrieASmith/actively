@@ -1,4 +1,6 @@
 class SnackIngredientsController < ApplicationController
+  before_filter :authenticate_user! 
+
   def show
     @snack = Snack.find(params[:snack_id])
     @snack_ingredient = SnackIngredient.find(params[:id])

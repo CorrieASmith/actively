@@ -1,4 +1,6 @@
 class SnacksController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
     @snacks = Snack.all
   end

@@ -1,4 +1,6 @@
 class LunchIngredientsController < ApplicationController
+  before_filter :authenticate_user! 
+
   def show
     @lunch = Lunch.find(params[:lunch_id])
     @lunch_ingredient = LunchIngredient.find(params[:id])

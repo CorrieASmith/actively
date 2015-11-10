@@ -1,4 +1,6 @@
 class DinnersController < ApplicationController
+  before_filter :authenticate_user! 
+
   def index
     @dinners = Dinner.all
   end

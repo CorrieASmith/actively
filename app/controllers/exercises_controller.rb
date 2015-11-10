@@ -1,4 +1,6 @@
 class ExercisesController < ApplicationController
+  before_filter :authenticate_user! 
+
   def show
     @target = Target.find(params[:target_id])
     @exercise = Exercise.find(params[:id])

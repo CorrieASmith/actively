@@ -1,4 +1,6 @@
 class BreakfastsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @breakfasts = Breakfast.all
   end
