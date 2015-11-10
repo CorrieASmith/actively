@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  it { should have_many :targets }
+  it { should have_many :breakfasts }
+  it { should have_many :lunches }
+  it { should have_many :dinners }
+  it { should have_many :snacks }
 end

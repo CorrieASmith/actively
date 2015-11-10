@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20151110002629) do
     t.integer  "target_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "lunch_ingredients", force: :cascade do |t|
