@@ -14,6 +14,7 @@ class TargetsController < ApplicationController
 
   def create
     @target = Target.new(target_params)
+    current_user.targets.push(@target)
     if @target.save
       flash[:notice] = "Your target muscle was submitted successfully!"
       redirect_to targets_path
