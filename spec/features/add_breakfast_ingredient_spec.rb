@@ -17,7 +17,7 @@ describe "the add a breakfast process" do
     login_as(user, :scope => :user)
     breakfast = FactoryGirl.create(:breakfast)
     visit breakfast_path(breakfast)
-    click_link "add_ingredient"
+    click_link 'Add an ingredient'
     fill_in 'Description', :with => 'Flour'
     click_on 'Create Breakfast ingredient'
     expect(page).to have_content 'Flour'
