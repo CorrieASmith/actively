@@ -14,6 +14,7 @@ class SnacksController < ApplicationController
 
   def create
     @snack = Snack.new(snack_params)
+    current_user.snacks.push(@snack)
     if @snack.save
       flash[:notice] = "Your snack was submitted successfully!"
       redirect_to snacks_path

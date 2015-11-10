@@ -1,10 +1,12 @@
 <h3>Dinner</h3>
 <br>
 
-<ul>
-  <% @dinners.each do |dinner| %>
-  <li><%= link_to dinner.add_food, dinner_path(dinner) %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @dinners.each do |dinner| %>
+      <% if current_user == dinner.user %>
+      <li><%= link_to dinner.add_food, dinner_path(dinner) %></li>
+      <% end %>
+    <% end %>
+  </ul>
 
 <%= link_to 'Add Food', new_dinner_path, id: "new_dinner", remote: true %>

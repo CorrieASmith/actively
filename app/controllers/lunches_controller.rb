@@ -14,6 +14,7 @@ class LunchesController < ApplicationController
 
   def create
     @lunch = Lunch.new(lunch_params)
+    current_user.lunches.push(@lunch)
     if @lunch.save
       flash[:notice] = "Your lunch was submitted successfully!"
       redirect_to lunches_path
