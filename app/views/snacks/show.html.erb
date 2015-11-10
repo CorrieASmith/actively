@@ -1,27 +1,29 @@
-<h3><%= @snack.add_food %></h3>
-<br>
-
-<% if @snack.snack_ingredients.any? %>
-<h4>Here are the ingredients in this snack food:</h4>
-
-<ul>
-  <% @snack.snack_ingredients.each do |snack_ingredient| %>
-  <li>
-    <%= snack_ingredient.description %> |
-    <%= link_to "Edit", edit_snack_snack_ingredient_path(@snack, snack_ingredient), id: "edit_snack_ingredient", remote: true %> |
-    <%= link_to "Delete", snack_snack_ingredient_path(@snack, snack_ingredient),
-    :data => {:confirm => "Are you sure?",
-      :method => "delete"} %>
-    </li>
-    <% end %>
-  </ul>
-  <% else %>
-  <p>There are no ingredients for this food yet!</p>
-  <% end %>
-
+<div class="container">
+  <h3><%= @snack.add_food %></h3>
   <br>
 
-  <p><%= link_to "Add an ingredient", new_snack_snack_ingredient_path(@snack), id:"new_snack_ingredient", remote: true%></p>
-  <p><%= link_to "Delete", snack_path(@snack),
-  :data => {:confirm => "Are you sure you want to delete this meal?",
-    :method => "delete"} %></p>
+  <% if @snack.snack_ingredients.any? %>
+  <h4>Here are the ingredients in this snack food:</h4>
+
+  <ul>
+    <% @snack.snack_ingredients.each do |snack_ingredient| %>
+    <li>
+      <%= snack_ingredient.description %> |
+      <%= link_to "Edit", edit_snack_snack_ingredient_path(@snack, snack_ingredient), id: "edit_snack_ingredient", remote: true %> |
+      <%= link_to "Delete", snack_snack_ingredient_path(@snack, snack_ingredient),
+      :data => {:confirm => "Are you sure?",
+        :method => "delete"} %>
+      </li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>There are no ingredients for this food yet!</p>
+    <% end %>
+
+    <br>
+
+    <p><%= link_to "Add an ingredient", new_snack_snack_ingredient_path(@snack), id:"new_snack_ingredient", remote: true%></p>
+    <p><%= link_to "Delete", snack_path(@snack),
+    :data => {:confirm => "Are you sure you want to delete this meal?",
+      :method => "delete"} %></p>
+</div>

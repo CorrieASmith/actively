@@ -1,12 +1,14 @@
-<h3>Welcome, <%= @user.email %>!</h3>
-<br>
+<div class="container">
+  <h3>Welcome, <%= @user.email %>!</h3>
+  <br>
 
-<%= link_to 'Exercise', targets_path(current_user) %>
-<br><br>
-<%= link_to 'Breakfast', breakfasts_path(current_user) %>
-<br><br>
-<%= link_to 'Lunch', lunches_path(current_user) %>
-<br><br>
-<%= link_to 'Dinner', dinners_path(current_user) %>
-<br><br>
-<%= link_to 'Snacks', snacks_path(current_user) %>
+  <%= link_to 'Exercise', targets_path(current_user) %>
+  <br><br>
+  <%= link_to 'Breakfast', breakfasts_path(current_user) %>
+  <br><br>
+  <%= link_to 'Lunch', lunches_path(current_user) %>
+  <br><br>
+  <%= link_to 'Dinner', dinners_path(current_user) %>
+  <br><br>
+  <%= link_to 'Snacks', snacks_path(current_user) %>
+</div>
