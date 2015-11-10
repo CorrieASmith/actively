@@ -1,10 +1,12 @@
 <h3>Targets</h3>
 <br>
 
-<ul>
-  <% @targets.each do |target| %>
-    <li><%= link_to target.muscle, target_path(target) %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @targets.each do |target| %>
+      <% if current_user == target.user %>
+        <li><%= link_to target.muscle, target_path(target) %></li>
+      <% end %>
+    <% end %>
+  </ul>
 
 <%= link_to 'New Target Muscle', new_target_path, id: "new_muscle", remote: true %>
